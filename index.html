@@ -25,13 +25,13 @@
         </form>
 
         <div id="list-container">
-            
+
             <ul>
                 <!-- ciclo for per gli obj di toDo -->
                 <li v-for="(task, index) in toDo" :key="index">
                     <!-- se task.done è uguale a true, aggiungi la classe testo sbarrato -->
                     <span :class="task.done === true ? 'line-through' : '' ">{{ task.text }}</span>
-                    <i class="fa-solid fa-xmark"></i>
+                    <i @click="removeTask(index)" class="fa-solid fa-xmark"></i>
                 </li>
             </ul>
             

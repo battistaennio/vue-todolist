@@ -1,6 +1,6 @@
 //Stampare all’interno di una lista HTML un item per ogni todo.
 //Se la proprietà done è uguale a true, visualizzare il testo del todo sbarrato.
-
+//Visualizzare a fianco ad ogni item ha una “x”: cliccando su di essa, il todo viene rimosso dalla lista.
 
 //inizializzazione vue
 const { createApp } = Vue;
@@ -32,4 +32,10 @@ createApp({
             ]
         }
     },
+    methods: {
+
+        removeTask(indice) {
+            this.toDo.splice(indice, 1);
+        }
+    }
 }).mount("#container")
