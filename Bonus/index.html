@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do | Bonus</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    
+    <div id="container">
+        <h1>lista delle cose da fare</h1>
+
+        <form action="#">
+
+            <!-- attraverso v-model leggo il testo scritto -->
+            <input type="text" placeholder="aggiungi task" v-model="newTask">
+            <br>
+            <!-- stampo tramite la funzione addTask il nuovo task -->
+            <button @click="addTask">Aggiungi</button>
+            <!-- se inputError === vero, mostro il messaggio di errore -->
+            <div style="color: red;" v-if="inputError">
+                <span>Il nuovo task deve contenere almeno 5 caratteri</span>
+            </div>
+            
+        </form>
+
+        <div id="list-container">
+            <!-- se ci sono task -->
+            <ul v-if="toDo.length > 0">
+                <!-- ciclo for per gli obj di toDo -->
+                <li v-for="(task, index) in toDo" :key="index">
+                    <!-- se task.done è uguale a true, aggiungi la classe testo sbarrato -->
+                    <span @click="convertDone(index)" :class="task.done === true ? 'line-through' : '' ">{{ task.text }}</span>
+                    <i @click="removeTask(index)" class="fa-solid fa-xmark"></i>
+                </li>
+            </ul>
+            <!-- altrimenti -->
+            <h2 v-else style="color: #3d4679;">Non hai task!</h2>
+            
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
