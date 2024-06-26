@@ -38,13 +38,15 @@ li{
     position: relative;
 }
 
-li::after{
+.line-through{
+    text-decoration: line-through;
+}
+
+li i{
     position: absolute;
     right: 10px;
-    font-family: "Font Awesome 5 Free";
-    content: "x";
-    font-weight: 900;
     cursor: pointer;
+    font-size: 25px;
 }
 
 li:last-child{
