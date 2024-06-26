@@ -19,9 +19,11 @@
         <h1>lista delle cose da fare</h1>
 
         <form action="#">
-            <input type="text" id="user-element">
+            <!-- attraverso v-model leggo il testo scritto -->
+            <input type="text" placeholder="aggiungi task" v-model="newTask">
             <br>
-            <button>Aggiungi</button>
+            <!-- stampo tramite la funzione addTask il nuovo task -->
+            <button @click="addTask">Aggiungi</button>
         </form>
 
         <div id="list-container">
