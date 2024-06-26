@@ -9,8 +9,11 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
+            //booleano per testo task < 5 lettere
             inputError: false,
+            //dichiarazione nuovo task vuoto
             newTask: "",
+            //array toDo
             toDo: [
                 {
                     text: "fare passeggiata con il cane",
@@ -36,20 +39,25 @@ createApp({
         }
     },
     methods: {
-
+        //funzione per rimuovere il task
         removeTask(indice) {
+            //splice rimuove dall'array l'oggetto in posizione indice di quantità 1
             this.toDo.splice(indice, 1);
         },
-
+        //funzione per aggiungere il task
         addTask() {
+            //se il nuovo task non è vuoto ed ha una lungezza superiore o uguale a 5 lettere
             if (this.newTask !== "" && this.newTask.length >= 5) {
+                //unshift aggiunge in posizione 0 un nuovo oggetto all'array
                 this.toDo.unshift({text: this.newTask, done: false});
+                //booleano errore rimane falso
                 this.inputError = false;
-            } else {
+            } else { //altrimenti
+                //booleano errore vero
                 this.inputError = true;
             }
+            //dopodichè svuoto il contenuto nell'input
             this.newTask = "";
         },
-
     }
 }).mount("#container")

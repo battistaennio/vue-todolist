@@ -25,7 +25,7 @@
             <br>
             <!-- stampo tramite la funzione addTask il nuovo task -->
             <button @click="addTask">Aggiungi</button>
-
+            <!-- se inputError === vero, mostro il messaggio di errore -->
             <div style="color: red;" v-if="inputError">
                 <span>Il nuovo task deve contenere almeno 5 caratteri</span>
             </div>
@@ -33,7 +33,7 @@
         </form>
 
         <div id="list-container">
-
+            <!-- se ci sono task -->
             <ul v-if="toDo.length > 0">
                 <!-- ciclo for per gli obj di toDo -->
                 <li v-for="(task, index) in toDo" :key="index">
@@ -42,7 +42,8 @@
                     <i @click="removeTask(index)" class="fa-solid fa-xmark"></i>
                 </li>
             </ul>
-            <h2 style="color: #3d4679;" v-else>Non hai task!</h2>
+            <!-- altrimenti -->
+            <h2 v-else style="color: #3d4679;">Non hai task!</h2>
             
         </div>
     </div>
