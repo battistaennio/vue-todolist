@@ -9,6 +9,7 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
+            inputError: false,
             newTask: "",
             toDo: [
                 {
@@ -41,7 +42,13 @@ createApp({
         },
 
         addTask() {
-            this.toDo.unshift({text: this.newTask, done: false})
+            if (this.newTask !== "" && this.newTask.length >= 5) {
+                this.toDo.unshift({text: this.newTask, done: false});
+                this.inputError = false;
+            } else {
+                this.inputError = true;
+            }
+            this.newTask = "";
         },
 
     }

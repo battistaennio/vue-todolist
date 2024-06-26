@@ -19,16 +19,22 @@
         <h1>lista delle cose da fare</h1>
 
         <form action="#">
+
             <!-- attraverso v-model leggo il testo scritto -->
             <input type="text" placeholder="aggiungi task" v-model="newTask">
             <br>
             <!-- stampo tramite la funzione addTask il nuovo task -->
             <button @click="addTask">Aggiungi</button>
+
+            <div style="color: red;" v-if="inputError">
+                <span>Il nuovo task deve contenere almeno 5 caratteri</span>
+            </div>
+            
         </form>
 
         <div id="list-container">
 
-            <ul>
+            <ul v-if="toDo.length > 0">
                 <!-- ciclo for per gli obj di toDo -->
                 <li v-for="(task, index) in toDo" :key="index">
                     <!-- se task.done è uguale a true, aggiungi la classe testo sbarrato -->
@@ -36,6 +42,7 @@
                     <i @click="removeTask(index)" class="fa-solid fa-xmark"></i>
                 </li>
             </ul>
+            <h2 style="color: #3d4679;" v-else>Non hai task!</h2>
             
         </div>
     </div>
